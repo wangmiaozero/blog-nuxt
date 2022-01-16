@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3127341 */
+  src: url('iconfont.woff2?t=1641826218510') format('woff2'),
+       url('iconfont.woff?t=1641826218510') format('woff'),
+       url('iconfont.ttf?t=1641826218510') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-liulan:before {
+  content: "\e640";
+}
+
+.icon-github:before {
+  content: "\e72a";
+}
+
+.icon-icon3:before {
+  content: "\e62b";
+}
+
+.icon-weixin:before {
+  content: "\e62c";
+}
+
+.icon-shoucang2:before {
+  content: "\e605";
+}
+
+.icon-bi:before {
+  content: "\e620";
+}
+
+.icon-sousuo:before {
+  content: "\e618";
+}
+
+.icon-iconset0451:before {
+  content: "\e74a";
+}
+
+.icon-iconset0454:before {
+  content: "\e74d";
+}
+
+.icon-pause:before {
+  content: "\e628";
+}
+
+.icon-top:before {
+  content: "\e608";
+}
+
+.icon-play:before {
+  content: "\e641";
+}
+
+.icon-comment:before {
+  content: "\e607";
+}
+
+.icon-shu:before {
+  content: "\e64c";
+}
+
+.icon-close:before {
+  content: "\e69e";
+}
+
+.icon-menu:before {
+  content: "\e61c";
+}
+

@@ -1,0 +1,446 @@
+export const Mock = () =>{
+    const WebArticlePage = {
+        "code": 1000,
+        "message": "success",
+        "data": {
+            "list": [
+                {
+                    "id": "422",
+                    "typeID": 99,
+                    "title": "Vue3.0的设计目标是什么？做了哪些优化?",
+                    "author": "兔子零",
+                    "excerpt": "不以解决实际业务痛点的更新都是耍流氓，下面我们来列举一下Vue3之前我们或许会面临的问题",
+                    "read_counts": 78,
+                    "typeName": "刷题",
+                    "createTime": "2022-01-11 23:16:52",
+                    "updateTime": "2022-01-15 21:38:57",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20220111/d5c27ae0-72f1-11ec-83c8-a38d44b033d4.png",
+                    "music": "https://oss.wangmiaozero.cn/blogs/mp3/2.mp3",
+                    "collectTotal": null,
+                    "likeTotal": "1"
+                },
+                {
+                    "id": "421",
+                    "typeID": 99,
+                    "title": "自定义指令是什么？有哪些应用场景？",
+                    "author": "兔子零",
+                    "excerpt": "指令系统是计算机硬件的语言系统，也叫机器语言，它是系统程序员看到的计算机的主要属性。因此指令系统表征了计算机的基本功能决定了机器所要求的能力",
+                    "read_counts": 248,
+                    "typeName": "刷题",
+                    "createTime": "2022-01-10 23:20:56",
+                    "updateTime": "2022-01-13 23:18:30",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20220110/14f3a460-7229-11ec-a993-79ff24b0b12d.png",
+                    "music": "https://oss.wangmiaozero.cn/blogs/mp3/25.mp3",
+                    "collectTotal": null,
+                    "likeTotal": "2"
+                },
+                {
+                    "id": "419",
+                    "typeID": 99,
+                    "title": "虚拟DOM一定更快吗？",
+                    "author": "兔子零",
+                    "excerpt": "我们常说的虚拟DOM是通过JS对象模拟出来的DOM节点,domDiff是通过特定算法计算出来一次操作所带来的DOM变化。react和vue中都使用了虚拟DOM，我们借着react聊聊虚拟DOM。",
+                    "read_counts": 45,
+                    "typeName": "刷题",
+                    "createTime": "2022-01-09 22:17:10",
+                    "updateTime": "2022-01-12 00:22:08",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/88.jpg",
+                    "music": "https://oss.wangmiaozero.cn/blogs/mp3/17.mp3",
+                    "collectTotal": null,
+                    "likeTotal": "1"
+                },
+                {
+                    "id": "420",
+                    "typeID": 99,
+                    "title": "什么是虚拟DOM？",
+                    "author": "兔子零",
+                    "excerpt": "什么是虚拟DOM？",
+                    "read_counts": 245,
+                    "typeName": "刷题",
+                    "createTime": "2022-01-09 22:17:10",
+                    "updateTime": "2022-01-15 21:40:44",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/19.jpg",
+                    "music": "https://oss.wangmiaozero.cn/blogs/mp3/17.mp3",
+                    "collectTotal": null,
+                    "likeTotal": "1"
+                },
+                {
+                    "id": "418",
+                    "typeID": 3,
+                    "title": "vue拦截",
+                    "author": "兔子零",
+                    "excerpt": "vue拦截",
+                    "read_counts": 244,
+                    "typeName": "vue",
+                    "createTime": "2022-01-09 20:22:05",
+                    "updateTime": "2022-01-12 09:38:47",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/50.jpg",
+                    "music": "https://oss.wangmiaozero.cn/blogs/mp3/13.mp3",
+                    "collectTotal": null,
+                    "likeTotal": "1"
+                },
+                {
+                    "id": "417",
+                    "typeID": 6,
+                    "title": "常用的正则",
+                    "author": "兔子零",
+                    "excerpt": "常用的正则",
+                    "read_counts": 59,
+                    "typeName": "正则效验",
+                    "createTime": "2022-01-09 20:18:02",
+                    "updateTime": "2022-01-13 22:23:15",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/96.jpg",
+                    "music": "https://oss.wangmiaozero.cn/blogs/mp3/22.mp3",
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "416",
+                    "typeID": 41,
+                    "title": "HTML5的 input:file上传类型控制",
+                    "author": "兔子零",
+                    "excerpt": "属性值有以下几个比较常用：\n\naccept：表示可以选择的文件MIME类型，多个MIME类型用英文逗号分开，常用的MIME类型见下表。\n\nmultiple：是否可以选择多个文件，多个文件时其value值为第一个文件的虚拟路径。",
+                    "read_counts": 40,
+                    "typeName": "html",
+                    "createTime": "2022-01-04 23:31:33",
+                    "updateTime": "2022-01-10 01:25:28",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20220104/329c1fa0-6d70-11ec-8ce1-774a4b077c84.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "415",
+                    "typeID": 44,
+                    "title": "css input[type=file] 样式美化，input上传按钮美化",
+                    "author": "兔子零",
+                    "excerpt": "我们在做input文本上传的时候，html自带的上传按钮比较丑，如何对其进行美化呢？同理：input checkbox美化，input radio美化是一个道理的，后面文章会总结。",
+                    "read_counts": 74,
+                    "typeName": "css",
+                    "createTime": "2022-01-04 23:16:24",
+                    "updateTime": "2022-01-13 22:14:34",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20220104/17c77650-6d72-11ec-9249-891271025a64.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "414",
+                    "typeID": 41,
+                    "title": "input accept属性限制文件上传格式",
+                    "author": "兔子零",
+                    "excerpt": "上传文件的类型；具体做法如下所示：\n\n注意：accept属性可以限制上传格式，其有兼容性如下",
+                    "read_counts": 38,
+                    "typeName": "html",
+                    "createTime": "2022-01-04 23:06:30",
+                    "updateTime": "2022-01-09 06:24:24",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20220104/329c1fa0-6d70-11ec-8ce1-774a4b077c84.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "413",
+                    "typeID": 57,
+                    "title": "redis 出现了Cannot connect to server . Check log for Aetails错误",
+                    "author": "兔子零",
+                    "excerpt": "redis 出现了Cannot connect to server . Check log for Aetails错误",
+                    "read_counts": 59,
+                    "typeName": "redis",
+                    "createTime": "2021-12-19 18:42:52",
+                    "updateTime": "2022-01-11 16:47:36",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20211219/2d92bb90-60b9-11ec-8ce1-774a4b077c84.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "412",
+                    "typeID": 97,
+                    "title": "Vue3+typescript 快速上手",
+                    "author": "兔子零",
+                    "excerpt": "TypeScript是一种由微软开发的开源、跨平台的编程语言。它是JavaScript的超集，最终会被编译为JavaScript代码。",
+                    "read_counts": 85,
+                    "typeName": "vue3",
+                    "createTime": "2021-12-19 00:01:25",
+                    "updateTime": "2022-01-13 17:36:57",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20211219/aca83110-601b-11ec-9a3a-83ea37c722ac.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "411",
+                    "typeID": 10,
+                    "title": "npm",
+                    "author": "兔子零",
+                    "excerpt": "npm",
+                    "read_counts": 52,
+                    "typeName": "工具",
+                    "createTime": "2021-12-15 23:17:44",
+                    "updateTime": "2022-01-13 22:25:43",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/29.jpg",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "410",
+                    "typeID": 44,
+                    "title": "SassScript",
+                    "author": "兔子零",
+                    "excerpt": "在 CSS 属性的基础上 Sass 提供了一些名为 SassScript 的新功能。 SassScript 可作用于任何属性，允许属性使用变量、算数运算等额外功能。",
+                    "read_counts": 46,
+                    "typeName": "css",
+                    "createTime": "2021-12-12 19:54:26",
+                    "updateTime": "2022-01-10 09:15:53",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/40.jpg",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": "1"
+                },
+                {
+                    "id": "409",
+                    "typeID": 1,
+                    "title": "微信小程序生成二维码",
+                    "author": "兔子零",
+                    "excerpt": "微信小程序生成二维码",
+                    "read_counts": 49,
+                    "typeName": "wechat",
+                    "createTime": "2021-12-12 12:36:30",
+                    "updateTime": "2022-01-13 22:25:58",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/37.jpg",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "408",
+                    "typeID": 97,
+                    "title": "Vite2 + Vue3搭建项目脚手架",
+                    "author": "兔子零",
+                    "excerpt": "Vite2 + Vue3搭建项目脚手架",
+                    "read_counts": 64,
+                    "typeName": "vue3",
+                    "createTime": "2021-12-11 21:41:38",
+                    "updateTime": "2022-01-12 09:44:34",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20211211/5cdf6880-5a88-11ec-9a3a-83ea37c722ac.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "407",
+                    "typeID": 51,
+                    "title": "新Mac（M1芯片）之Flutter开发环境搭建",
+                    "author": "兔子零",
+                    "excerpt": "新Mac（M1芯片）之Flutter开发环境搭建",
+                    "read_counts": 58,
+                    "typeName": "flutter",
+                    "createTime": "2021-12-11 21:19:53",
+                    "updateTime": "2022-01-13 14:50:14",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20211211/f7339ae0-5a84-11ec-9a3a-83ea37c722ac.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "405",
+                    "typeID": 36,
+                    "title": "mac系统中.bash_profile只读或没有权限的解决方法",
+                    "author": "兔子零",
+                    "excerpt": "mac系统中.bash_profile只读或没有权限的解决方法",
+                    "read_counts": 43,
+                    "typeName": "liunx",
+                    "createTime": "2021-12-11 21:18:08",
+                    "updateTime": "2022-01-08 01:48:56",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/31.jpg",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "404",
+                    "typeID": 36,
+                    "title": "zsh: command not found: brew(MAC安装brew后提示无该命令解决方案)",
+                    "author": "兔子零",
+                    "excerpt": "zsh: command not found: brew(MAC安装brew后提示无该命令解决方案)",
+                    "read_counts": 58,
+                    "typeName": "liunx",
+                    "createTime": "2021-12-11 19:46:27",
+                    "updateTime": "2022-01-08 10:17:22",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20211211/8695c3a0-5a78-11ec-8129-371071f2ccb8.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "403",
+                    "typeID": 36,
+                    "title": "Mac安装CocoaPods",
+                    "author": "兔子零",
+                    "excerpt": "关于CocoaPods，是OS X和iOS下的一个第三方类库管理工具，它的好处这里不多说，主要说下如何安装CocoaPods。",
+                    "read_counts": 51,
+                    "typeName": "liunx",
+                    "createTime": "2021-12-11 19:07:08",
+                    "updateTime": "2022-01-09 15:15:51",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/userPicList/20211211/c199daa0-5a72-11ec-9a3a-83ea37c722ac.png",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                },
+                {
+                    "id": "402",
+                    "typeID": 10,
+                    "title": "HHKB MAC 配置指南 操作指南 快捷键",
+                    "author": "兔子零",
+                    "excerpt": "HHKB MAC 配置指南 操作指南 快捷键",
+                    "read_counts": 2344,
+                    "typeName": "工具",
+                    "createTime": "2021-12-11 14:52:32",
+                    "updateTime": "2022-01-09 03:11:10",
+                    "isPrivacy": 0,
+                    "listPic": "https://oss.wangmiaozero.cn/img/background/56.jpg",
+                    "music": null,
+                    "collectTotal": null,
+                    "likeTotal": null
+                }
+            ],
+            "pagination": {
+                "page": 1,
+                "size": 20,
+                "total": 354
+            }
+        }
+    };
+    const WebArticleInfo = {
+        "code": 1000,
+        "message": "success",
+        "data": {
+            "id": "3",
+            "createTime": "2018-03-12 22:08:32",
+            "updateTime": "2022-01-15 22:26:51",
+            "typeID": 8,
+            "title": "世界上只有一种英雄主义，就是在认清生活真相之后依然选择热爱生活",
+            "read_counts": 2905,
+            "mdcontent": "<iframe src=\"//player.bilibili.com/player.html?aid=18154913&bvid=BV1UW411i7hC&cid=29640604&page=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\"> </iframe>\n\n01\n\n22岁生日，一个人吃火锅，还好锅底可以点最辣的；187次路过的码头，4次遇到一对情侣，两个人眼中的风景，也不见得更好看；第6次一个人搬家，扔掉了3箱旧东西，很遗憾，好像连回忆也一并被丢弃了。\n\n8点场的电影，48块的双人套餐，两杯可乐一个人喝，喝到心情都有点丧丧的；第12次一个人输液，200ml的药水，一共2386滴，37分钟滴完，但痛了很久；一个人过生日，8寸的蛋糕，颜色有5种。\n\n看到这些，我不由得联想到自己的状态。\n\n住学校周转房的11楼，因为没有通电梯，同事们都没搬进去，那一层只有我一个人。尽管房子花了四五万装修，买了沙发茶几，装了电视，贴了墙纸，但还是没有家的感觉。\n\n有电冰箱、零食柜，但里面都是空的；有微波炉、电磁炉，但从来没用过。\n\n家里一共6盏灯，现在已经坏了4盏，我没想着去修一下。于我而言，黑暗冷清和灯火通明，并没有什么区别。\n\n每周五下午开始，就没人再和我说话，等到周日晚上返校开班会的时候，前五分钟的讲话连吐字都不清楚，需要重新练习发声。\n\n我也渴望被理解，但我讨厌去解释。\n\n02\n\n一个人生活，细细数来已经快10年了。\n\n背井离乡到外地求学，毕业后在冰冷的钢筋森林里打拼。学着在一个陌生的环境中，处理人际关系，打理生活琐事，去应对生活里的各种暴击。\n\n一个人吃饭，点两菜一汤，老板不愿浪费，自作主张少炒了一道菜。一个人吃火锅，服务员反复强调要按两人份收钱，不然他们就亏了。\n\n一个人去KTV，开了间包厢，唱了好多遍《好久不见》和《盛夏的果实》，想唱《屋顶》没人陪，叫来包房公主，但她不喜欢周杰伦。\n\n一个人去医院，住的地方叫不到车，已经吐到连胃酸都没得吐了，还要强撑着开车，难受的时候靠边停一会儿，即便头晕目眩也要保持清醒底线，得分清刹车和油门。\n\n一个人吃烧烤，豆角、花菜、豆腐串、烤肉、韭菜、茄子、鱼片，每次都必点，老板已经很熟悉了，去的时候会安排和别人拼桌，然后直接把单子报一遍。\n\n一个人旅行，下榻在桂林，那夜雷雨，全区停电。起初因为雷电太响，就躲得离窗户远一些。后来干脆拉开窗帘，坐在窗台上，眼前一片漆黑，只有闪电在天空肆意纵横，雨势滂沱，雷声滚滚。\n\n我想着那些黑洞洞的窗口里，人们都蜷缩躲着，就忽而觉得这是一场盛宴，美得惊心动魄，不药可救。\n\n人生中大部分时候，我都无比厌恶自己，那一刻我觉得自己很棒。\n\n03\n\n2018年的第一天，我看到一个大四的小姑娘在朋友圈许愿：“我的新年愿望，是希望能买一台全自动洗衣机，实在不想碰冰水了。”\n\n那是我用刀片划拉手腕重生的第二天，我决定帮她实现愿望。\n\n我让她下单后找我代付，很快就看见她更新朋友圈：“新年愿望达成，再也不用碰冰水了。”\n\n前些天，我又看到她一个人去一个偏远的地方上班，打不到车，叫不了外卖。住的地方什么也没有，生活用品和铺盖都得自己张罗，做到年底可以拿4千块。\n\n她找我诉苦：“太冷了，太孤独了，太荒凉了，原本是想毕业了不好意思再让父母养着就出来试试，说不定以后还可以考到这里工作，没想到这么艰难，突然就迷茫了。”\n\n我说：“不要迷茫，要想清楚，如果只为赚那点工资，就早点撤离，生活和感情一样，都需要及时止损。一天都忍受不了的人，别想着可以将就一辈子。一天都呆不下去的地方，别想着可以凑合一辈子。”\n\n她说：“可是我不想回家，我妈知道我辞职会杀了我。”\n\n我说：“那你回学校准备考工作，就考你想去的地方，经过这样一番折腾，你应该就有动力复习了。”\n\n她说：“可是我没有车费。”\n\n于是，我又给她转了4千块。\n\n转完钱我就把她拉黑了，因为我并不关心她以后过得怎么样。我肯帮她，只是庆幸自己好不容易熬过那个冰冷的夜晚，想在这样一个寒冷的冬天，给陌生人施与一些暖意。\n\n她辞职后，应该会一个人把买好的东西打包好，再搬回学校，应该会一个人做饭、看书、刷题，工作考了一次又一次，然后被无情刷掉。\n\n可是，这些都没什么大不了，生命中有一段严重孤独的时光是好事。它得隔绝外界的打扰和帮助，是一个人从培养社会性转向自我探索的非常好的契机。\n\n经过这个过程，你可以完成对自己的重新评估，学会信任自己，习惯独自行动，看轻外部评价，实现人生的种种可能。\n\n04\n\n电影《冈仁波齐》中，有一个镜头让我很感动。一个朝圣者趴在地上，看着一只蚂蚁缓缓在他面前爬过。\n\n我感动的点，不是他给一只蚂蚁让路，毕竟这种行为沾染了都市文明中马路文化的傲慢。我感动的，是他“意识”到蚂蚁的存在，那是一只蚂蚁，不是一个1厘米不到的黑点图形。\n\n在他意识到蚂蚁的那一刻，他的孤独是有质感的，因为他感受到了大自然中其他生命的繁忙。\n\n那朱雀桥边，乌衣巷口， 金陵玉树，秦淮水榭，多少热闹是非成败，转头都变成了英雄冢。可是海滩的岩石，巍峨的高山，奔腾的激流，却从来都是那样，他们孤独而不朽。\n\n孤独真的很糟糕吗？我很喜欢短片里的回答。\n\n其实，什么样的状态，都总是有寂寞、失落、安静、绝望的日子。\n\n你离群索居，独自前行，是因为你知道所谓孤独，不过是害怕孤独，于是你耐住了寂寞，挨过了失落，学会了安静，扛住了绝望。\n\n寂寞是一种情绪，孤独是一种境境界。人终要是走出咖啡屋，尘世的喜怒哀乐的冲击往往更加强烈，更让人难以忘怀。\n\n只有耐得住寂寞，忍得了孤独，你才能让心静下来，学到更多的东西，获得独一份的成长。\n\n世界上没有两片相同的树叶，没有什么比自己陪伴自己，更让人幸福。\n\n05\n\n生而为人，我们太喜欢形式上的丰盈，并在无人问津的时刻变得脆弱，这是对自己不负责任的表现。\n\n一个人来时，不管他身后多么丰盈，早晚也要独自面对这个世界，完全依靠自己内心的力量存活下去。\n\n千万不要一遇到困难，就慌不择路到处找人求助，不敢自由思考和独立行动。千万不要刚探出一点头，又被几句外界评价打消，迅速缩回安全但逼仄的壳里。\n\n正如短片里说的那样，所谓孤独，不过是一场无人送粥的重感冒。疼总是外界给的，但病总是自己好的。我要放肆吃喝，放肆笑闹，我要跟我的灵魂说话，我孤独但我不寂寞。\n\n要么孤独，要么庸俗。扛得住孤独，世界才能被你左右。\n世界上只有一种英雄主义，就是在认清生活真相之后依然选择热爱生活。\n\n",
+            "content": "<p>&lt;iframe src=\"//player.bilibili.com/player.html?aid=18154913&amp;bvid=BV1UW411i7hC&amp;cid=29640604&amp;page=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\"&gt; &lt;/iframe&gt;\n\n</p>\n<p>01</p>\n<p>22岁生日，一个人吃火锅，还好锅底可以点最辣的；187次路过的码头，4次遇到一对情侣，两个人眼中的风景，也不见得更好看；第6次一个人搬家，扔掉了3箱旧东西，很遗憾，好像连回忆也一并被丢弃了。</p>\n<p>8点场的电影，48块的双人套餐，两杯可乐一个人喝，喝到心情都有点丧丧的；第12次一个人输液，200ml的药水，一共2386滴，37分钟滴完，但痛了很久；一个人过生日，8寸的蛋糕，颜色有5种。</p>\n<p>看到这些，我不由得联想到自己的状态。</p>\n<p>住学校周转房的11楼，因为没有通电梯，同事们都没搬进去，那一层只有我一个人。尽管房子花了四五万装修，买了沙发茶几，装了电视，贴了墙纸，但还是没有家的感觉。</p>\n<p>有电冰箱、零食柜，但里面都是空的；有微波炉、电磁炉，但从来没用过。</p>\n<p>家里一共6盏灯，现在已经坏了4盏，我没想着去修一下。于我而言，黑暗冷清和灯火通明，并没有什么区别。</p>\n<p>每周五下午开始，就没人再和我说话，等到周日晚上返校开班会的时候，前五分钟的讲话连吐字都不清楚，需要重新练习发声。</p>\n<p>我也渴望被理解，但我讨厌去解释。</p>\n<p>02</p>\n<p>一个人生活，细细数来已经快10年了。</p>\n<p>背井离乡到外地求学，毕业后在冰冷的钢筋森林里打拼。学着在一个陌生的环境中，处理人际关系，打理生活琐事，去应对生活里的各种暴击。</p>\n<p>一个人吃饭，点两菜一汤，老板不愿浪费，自作主张少炒了一道菜。一个人吃火锅，服务员反复强调要按两人份收钱，不然他们就亏了。</p>\n<p>一个人去KTV，开了间包厢，唱了好多遍《好久不见》和《盛夏的果实》，想唱《屋顶》没人陪，叫来包房公主，但她不喜欢周杰伦。</p>\n<p>一个人去医院，住的地方叫不到车，已经吐到连胃酸都没得吐了，还要强撑着开车，难受的时候靠边停一会儿，即便头晕目眩也要保持清醒底线，得分清刹车和油门。</p>\n<p>一个人吃烧烤，豆角、花菜、豆腐串、烤肉、韭菜、茄子、鱼片，每次都必点，老板已经很熟悉了，去的时候会安排和别人拼桌，然后直接把单子报一遍。</p>\n<p>一个人旅行，下榻在桂林，那夜雷雨，全区停电。起初因为雷电太响，就躲得离窗户远一些。后来干脆拉开窗帘，坐在窗台上，眼前一片漆黑，只有闪电在天空肆意纵横，雨势滂沱，雷声滚滚。</p>\n<p>我想着那些黑洞洞的窗口里，人们都蜷缩躲着，就忽而觉得这是一场盛宴，美得惊心动魄，不药可救。</p>\n<p>人生中大部分时候，我都无比厌恶自己，那一刻我觉得自己很棒。</p>\n<p>03</p>\n<p>2018年的第一天，我看到一个大四的小姑娘在朋友圈许愿：“我的新年愿望，是希望能买一台全自动洗衣机，实在不想碰冰水了。”</p>\n<p>那是我用刀片划拉手腕重生的第二天，我决定帮她实现愿望。</p>\n<p>我让她下单后找我代付，很快就看见她更新朋友圈：“新年愿望达成，再也不用碰冰水了。”</p>\n<p>前些天，我又看到她一个人去一个偏远的地方上班，打不到车，叫不了外卖。住的地方什么也没有，生活用品和铺盖都得自己张罗，做到年底可以拿4千块。</p>\n<p>她找我诉苦：“太冷了，太孤独了，太荒凉了，原本是想毕业了不好意思再让父母养着就出来试试，说不定以后还可以考到这里工作，没想到这么艰难，突然就迷茫了。”</p>\n<p>我说：“不要迷茫，要想清楚，如果只为赚那点工资，就早点撤离，生活和感情一样，都需要及时止损。一天都忍受不了的人，别想着可以将就一辈子。一天都呆不下去的地方，别想着可以凑合一辈子。”</p>\n<p>她说：“可是我不想回家，我妈知道我辞职会杀了我。”</p>\n<p>我说：“那你回学校准备考工作，就考你想去的地方，经过这样一番折腾，你应该就有动力复习了。”</p>\n<p>她说：“可是我没有车费。”</p>\n<p>于是，我又给她转了4千块。</p>\n<p>转完钱我就把她拉黑了，因为我并不关心她以后过得怎么样。我肯帮她，只是庆幸自己好不容易熬过那个冰冷的夜晚，想在这样一个寒冷的冬天，给陌生人施与一些暖意。</p>\n<p>她辞职后，应该会一个人把买好的东西打包好，再搬回学校，应该会一个人做饭、看书、刷题，工作考了一次又一次，然后被无情刷掉。</p>\n<p>可是，这些都没什么大不了，生命中有一段严重孤独的时光是好事。它得隔绝外界的打扰和帮助，是一个人从培养社会性转向自我探索的非常好的契机。</p>\n<p>经过这个过程，你可以完成对自己的重新评估，学会信任自己，习惯独自行动，看轻外部评价，实现人生的种种可能。</p>\n<p>04</p>\n<p>电影《冈仁波齐》中，有一个镜头让我很感动。一个朝圣者趴在地上，看着一只蚂蚁缓缓在他面前爬过。</p>\n<p>我感动的点，不是他给一只蚂蚁让路，毕竟这种行为沾染了都市文明中马路文化的傲慢。我感动的，是他“意识”到蚂蚁的存在，那是一只蚂蚁，不是一个1厘米不到的黑点图形。</p>\n<p>在他意识到蚂蚁的那一刻，他的孤独是有质感的，因为他感受到了大自然中其他生命的繁忙。</p>\n<p>那朱雀桥边，乌衣巷口， 金陵玉树，秦淮水榭，多少热闹是非成败，转头都变成了英雄冢。可是海滩的岩石，巍峨的高山，奔腾的激流，却从来都是那样，他们孤独而不朽。</p>\n<p>孤独真的很糟糕吗？我很喜欢短片里的回答。</p>\n<p>其实，什么样的状态，都总是有寂寞、失落、安静、绝望的日子。</p>\n<p>你离群索居，独自前行，是因为你知道所谓孤独，不过是害怕孤独，于是你耐住了寂寞，挨过了失落，学会了安静，扛住了绝望。</p>\n<p>寂寞是一种情绪，孤独是一种境境界。人终要是走出咖啡屋，尘世的喜怒哀乐的冲击往往更加强烈，更让人难以忘怀。</p>\n<p>只有耐得住寂寞，忍得了孤独，你才能让心静下来，学到更多的东西，获得独一份的成长。</p>\n<p>世界上没有两片相同的树叶，没有什么比自己陪伴自己，更让人幸福。</p>\n<p>05</p>\n<p>生而为人，我们太喜欢形式上的丰盈，并在无人问津的时刻变得脆弱，这是对自己不负责任的表现。</p>\n<p>一个人来时，不管他身后多么丰盈，早晚也要独自面对这个世界，完全依靠自己内心的力量存活下去。</p>\n<p>千万不要一遇到困难，就慌不择路到处找人求助，不敢自由思考和独立行动。千万不要刚探出一点头，又被几句外界评价打消，迅速缩回安全但逼仄的壳里。</p>\n<p>正如短片里说的那样，所谓孤独，不过是一场无人送粥的重感冒。疼总是外界给的，但病总是自己好的。我要放肆吃喝，放肆笑闹，我要跟我的灵魂说话，我孤独但我不寂寞。</p>\n<p>要么孤独，要么庸俗。扛得住孤独，世界才能被你左右。<br>世界上只有一种英雄主义，就是在认清生活真相之后依然选择热爱生活。</p>\n",
+            "isShow": 1,
+            "author": "汪苗",
+            "shareCode": "",
+            "listPic": "",
+            "telnum": "be5c252d31149b24d6ae9485e5d74ec3",
+            "isTop": 0,
+            "isPrivacy": 0,
+            "excerpt": "愿所有的美好如约而至，愿所有的黑暗都能看到希望，我们都能微笑前行，人生没有完美，有些遗憾才美...",
+            "music": "https://oss.wangmiaozero.cn/blogs/mp3/16.mp3",
+            "typeName": "随笔",
+            "collectTotal": null,
+            "likeTotal": "8"
+        }
+    };
+    const WebUserInfo = {
+        "code": 1000,
+        "message": "success",
+        "data": {
+            "webName": "全栈 | 兔子零-汪苗的个人网站-全栈修炼 —— Wang Miao's Personal Website",
+            "webDescribe": "汪苗，全栈，h5前端开发，web技术,node,小程序开发,android,IOS,游戏开发,兔子零,全栈修炼",
+            "webAddress": "https://www.wangmiaozero.cn",
+            "webSeo": "汪苗",
+            "icpTxt": "鄂ICP备19009935号-1",
+            "icpLink": "https://beian.miit.gov.cn",
+            "nickName": "admin",
+            "headImg": "https://oss.wangmiaozero.cn/userPicList/20210306/3f208c70-7e60-11eb-b71d-8346dec6c973.png"
+        }
+    };
+    const WebBlogrollList = {
+        "code": 1000,
+        "message": "success",
+        "data": []
+    };
+    const WebCommentPage = {
+        "code": 1000,
+        "message": "success",
+        "data": {
+            "list": [
+                {
+                    "id": "48",
+                    "name": "test",
+                    "avatarUrl": "4.jpg",
+                    "targetId": "422",
+                    "parentId": null,
+                    "commentName": "Vue3.0的设计目标是什么？做了哪些优化?",
+                    "content": "测试测试测试测试测试测试测试测试测试测试测试",
+                    "platformType": "pc",
+                    "topStatus": 0,
+                    "createTime": "2022-01-11 23:38:21",
+                    "updateTime": "2022-01-11 23:39:05"
+                }
+            ],
+            "pagination": {
+                "page": 1,
+                "size": 15,
+                "total": 1
+            }
+        }
+    };
+    const WebArticleInfo17 = {
+        "code": 1000,
+        "message": "success",
+        "data": {
+            "id": "17",
+            "createTime": "2018-06-24 09:46:13",
+            "updateTime": "2022-01-16 22:06:47",
+            "typeID": 8,
+            "title": "about",
+            "read_counts": 404,
+            "mdcontent": "# ☔️ 你好，我是兔子零！\n\n\n\nPART 1\n- 在识字是书荒，专注学习寻自由，离群索居享清静\n- 倾听心灵治疗，轻触指尖黑白键，聆听在唯美纯音\n- 明日又复明日，百年明日能几何，望闭门静思己过\n- 我吟诵诗与歌，人言落日是天涯，望极天涯不见家\n- 天空要下雨了，谁在等雨的到来，谁在享受着落雨\n\n\n\n今天的大海很温顺，也许是因为吞没了夕阳，沉睡了一般，只留下海鸥的鸣叫~~ \n\n陌生人，你好呀，承蒙遇见，三生有幸，永远年轻，永远热泪满盈，终身美丽~~ \n欢迎你的逗留，非常荣幸能在你的回忆里留下我的脚印，匆匆忙忙的人生，只是过客一场~~\n\n\n赠吾：世界上只有一种英雄主义，就是在认清生活真相之后依然选择热爱生活。\n\n——2022.1.3。\n\n\n<iframe height=100% width=100% src=\"//player.bilibili.com/player.html?bvid=BV1Nv411k7SF&page=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\"> </iframe>",
+            "content": "<h1 id=\"h1--\"><a name=\"☔️ 你好，我是兔子零！\" class=\"reference-link\"></a><span class=\"header-link octicon octicon-link\"></span>☔️ 你好，我是兔子零！</h1><p>PART 1</p>\n<ul>\n<li>在识字是书荒，专注学习寻自由，离群索居享清静</li><li>倾听心灵治疗，轻触指尖黑白键，聆听在唯美纯音</li><li>明日又复明日，百年明日能几何，望闭门静思己过</li><li>我吟诵诗与歌，人言落日是天涯，望极天涯不见家</li><li>天空要下雨了，谁在等雨的到来，谁在享受着落雨</li></ul>\n<p>今天的大海很温顺，也许是因为吞没了夕阳，沉睡了一般，只留下海鸥的鸣叫~~ </p>\n<p>陌生人，你好呀，承蒙遇见，三生有幸，永远年轻，永远热泪满盈，终身美丽~~<br>欢迎你的逗留，非常荣幸能在你的回忆里留下我的脚印，匆匆忙忙的人生，只是过客一场~~</p>\n<p>赠吾：世界上只有一种英雄主义，就是在认清生活真相之后依然选择热爱生活。</p>\n<p>——2022.1.3。</p>\n<p>&lt;iframe height=100% width=100% src=\"//player.bilibili.com/player.html?bvid=BV1Nv411k7SF&amp;page=1\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\"&gt; &lt;/iframe&gt;</p>\n",
+            "isShow": 1,
+            "author": "兔子零",
+            "shareCode": "https://oss.wangmiaozero.cn/userPicList/20220109/1de69470-7147-11ec-a993-79ff24b0b12d.png",
+            "listPic": "https://oss.wangmiaozero.cn/userPicList/20220109/1de69470-7147-11ec-a993-79ff24b0b12d.png",
+            "telnum": "be5c252d31149b24d6ae9485e5d74ec3",
+            "isTop": 0,
+            "isPrivacy": 0,
+            "excerpt": "about",
+            "music": "https://oss.wangmiaozero.cn/blogs/mp3/16.mp3",
+            "typeName": "随笔",
+            "collectTotal": null,
+            "likeTotal": null
+        }
+    };
+    
+    return new Map([
+        ["/web/article/page", WebArticlePage],
+        ["/web/article/info", WebArticleInfo],
+        ["/web/user/info", WebUserInfo],
+        ["/web/blogroll/list", WebBlogrollList],
+        ["/web/comment/page", WebCommentPage],
+        ["/web/article/info17", WebArticleInfo17],
+    ]
+    )
+}
+
+export default {
+	Mock
+}

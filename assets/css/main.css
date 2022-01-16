@@ -1,0 +1,125 @@
+html,
+body,
+p,
+input,
+textarea,
+button,
+div,
+span {
+    font-family: "eafont", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page {
+    transition: all 500ms;
+}
+
+.page-enter {
+    opacity: 0;
+    transform: translate(50px, 0);
+}
+
+.page-leave-active {
+    opacity: 0;
+    transform: translate(-50px, 0);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    transition: all .3s;
+}
+
+body {
+    overflow-x: hidden;
+    background: var(--color-bg-primary);
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f6f6f6;
+}
+
+.verify {
+    filter: blur(5px);
+    transition: none;
+}
+
+:root {
+    --color-bg-primary: #ffffff;
+    --color-bg-primary1:#F6F8FA;
+    --color-bg-primary2:#fbe5e5;
+    --color-bg-opacity: rgba(255, 255, 255, 0.9);
+
+    --color-border-1: #eeeeee;
+    --color-border-2: #f6f7f8;
+    --color-border-3: #b9b9b9;
+    --color-border-4: #F3FAFD;
+    --color-border-5: #eee;
+
+    --color-text-1: #24292e;
+    --color-text-2: #666;
+    --color-text-3: #888;
+    --color-text-4: #999;
+    --color-text-5: #555;
+    --color-text-6: #5b6773;
+    --color-text-7: #024180;
+    --color-text-8:#f56565;
+
+    --color-shadw-1: #f0f9ff;
+
+    --color-red: #ff3600;
+    --color-bar: #50bcb6;
+    --color-pink: #EF6D57;
+    --color-dark: #080808;
+    --color-active: #0084ff;
+}
+/* 晚上 */
+.dark-mode {
+    --color-bg-primary: #0d1117;
+    --color-bg-primary1:#080605;
+    --color-bg-primary2:#d2e7fb;
+    --color-bg-opacity: rgba(0, 0, 0, 0.9);
+
+    --color-text-1: #fff;
+    --color-text-2: #ccc;
+    --color-text-3: #ccc;
+    --color-text-4: #666;
+    --color-text-5: #888;
+    --color-text-6: #fff;
+    --color-text-7: #fff;
+    --color-text-8:#0084ff;
+
+    --color-shadw-1: rgba(0, 0, 0, 0);
+
+    --color-border-1: #30363d;
+    --color-border-2: #1b1b1b;
+    --color-border-4: #1b1b1b;
+    --color-border-5: #363535;
+
+    /* --color-red: #b92800; */
+    --color-red: #ff3600;
+    --color-bar: #50bcb6;
+    --color-pink: #EF6D57;
+    --color-dark: #080808;
+    --color-active: #0084ff;
+}
