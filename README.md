@@ -8,13 +8,11 @@ English | [简体中文](./README.zh-CN.md)
     <img src="https://img.shields.io/badge/Nuxt-v2.0.0-brightgreen">
     <img src="https://img.shields.io/badge/@vue/cli-v4.3.1-brightgreen">
     <img src="https://img.shields.io/badge/vuex-v3.4.0-brightgreen">
-    <img src="https://img.shields.io/badge/ElementUI-v2.13.0-brightgreen">
     <img src="https://img.shields.io/badge/Node-v12.16.1-brightgreen">
-    <img src="https://img.shields.io/badge/MongDB-v4.2.4-brightgreen">
 </div>
 
 <div align="center">
-    <img src="https://image.raindays.cn/image/github/mood.png" width="350px" style="margin:20px 0 10px">
+    <img src="./mood.png" width="350px" style="margin:20px 0 10px">
 </div>
 
 ## 🎃 hello,Stranger~~
