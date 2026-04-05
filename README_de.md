@@ -15,7 +15,6 @@ So etwas nennen viele „Blog“, aber ich gebe meiner Seite einen eigenen Namen
   <a href="./README_fr.md">Français</a> |
   <strong>Deutsch</strong> |
   <a href="./README_ja.md">日本語</a> |
-  <a href="./README_zh-TW.md">繁體中文</a> |
   <a href="./README_ru.md">Русский</a> |
   <a href="./README_es.md">Español</a> |
   <a href="./README_pt.md">Português</a> |
