@@ -5,11 +5,11 @@
     </div>
     <div class="nav" :style="{ top }">
       <ul class="nav-list">
-        <template v-for="(item, index) in menu">
-          <li :key="index">
+        <template v-for="(item, index) in menu" :key="index">
+          <li>
             <Tips>
               <a @click="toPage(item.url)">{{ item.title }}</a>
-              <template slot="tips">{{ item.description }}</template>
+              <template #tips>{{ item.description }}</template>
             </Tips>
           </li>
         </template>
@@ -37,7 +37,7 @@
       <div class="world">
         <Tips>
           <p>Sometimes you need to applaud yourself.</p>
-          <template slot="tips">
+          <template #tips>
             <p>有时候需要为自己鼓掌.</p>
           </template>
         </Tips>
@@ -115,24 +115,6 @@ export default {
       keyword: "",
     };
   },
-  computed: {
-    userInfo() {
-      return this.$store.getters.userInfo;
-    },
-    /*  viewList() {
-            return this.list.filter(item => {
-                const type = item.url
-                if (['subscribe', 'message'].includes(type)) {
-                    
-                    if (this.$store.state.userInfo.administrator[type]) {
-                        return item
-                    }
-                } else {
-                    return item
-                }
-            })
-        } */
-  },
   mounted() {},
   methods: {
     toPage(url) {
@@ -166,7 +148,7 @@ export default {
   cursor: pointer;
   color: var(--color-red);
   text-align: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-bg-opacity);
   z-index: 1000;
   &:active {
     opacity: 0.5;
@@ -185,7 +167,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.86);
+  background: var(--color-bg-opacity);
   transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
   .input-box {
     display: flex;
@@ -271,7 +253,7 @@ export default {
     bottom: 30px;
     display: block;
     text-align: center;
-    color: #666;
+    color: var(--color-text-2);
     p {
       font-size: 16px;
     }
@@ -288,10 +270,10 @@ export default {
       a {
         font-size: 24px;
         cursor: pointer;
-        color: #666;
+        color: var(--color-text-2);
         letter-spacing: 1px;
         &:hover {
-          color: #080808;
+          color: var(--color-text-1);
         }
       }
     }

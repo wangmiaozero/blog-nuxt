@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import { alert } from "../../utils/tips"
+import { useHttp } from '@/composables/http'
+import { alert } from '../../utils/tips'
 export default {
   data() {
     return {
@@ -29,35 +30,22 @@ export default {
   },
 
   methods: {
-    refresh() {
-      let params = {
-        height: 38,
-        width: 120,
-      };
-      this.$axios
-        .get("/app/comm/captcha", {params})
-        .then((res) => {
-          let data = res.data.data.data;
-          let captchaId = res.data.data.captchaId;
-          if (data.includes("data:image/png;base64,")) {
-            this.base64 = data;
-          } else {
-            this.svg = data;
-          }
-          this.$emit("input", captchaId);
-          this.$emit("change", {
-            base64: this.base64,
-            svg: this.svg,
-            captchaId,
-          });
-        })
-        .catch((err) => {
-		  alert({
-				content: err,
-				duration: 2500,
-				type:"zero"
-			})
-        });
+    async refresh() {
+      const http = useHttp()
+      const res = await http.get('/api/v1/captcha', { height: 38, width: 120 }).catch((err) => {
+        alert({ content: String(err), duration: 2500, type: 'zero' })
+        return null
+      })
+      if (!res) return
+      const data = res.data?.data
+      const captchaId = res.data?.captchaId
+      if (data?.includes('data:image/png;base64,')) {
+        this.base64 = data
+      } else {
+        this.svg = data
+      }
+      this.$emit('input', captchaId)
+      this.$emit('change', { base64: this.base64, svg: this.svg, captchaId })
     },
   },
 };

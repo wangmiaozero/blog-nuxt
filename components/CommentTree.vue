@@ -10,7 +10,7 @@
                   >
                     <div class="head">
                       <div class="img">
-                        <img :src="'/image/comment/' + items.avatarUrl" />
+                        <img :src="getCommentAvatarSrc(items.avatarUrl)" />
                       </div>
                       <div class="name">
                         <a class="admin-mark"
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import tool from "../utils/tool";
+
 export default {
     name:"CommentTree",
     props: {
@@ -48,6 +50,9 @@ export default {
       },
     },
     methods: {
+        getCommentAvatarSrc(avatarUrl){
+            return tool.getCommentAvatarSrc(avatarUrl)
+        },
         reply(row){
             this.$emit('click',row)
         }
@@ -75,7 +80,7 @@ export default {
           border-radius: 50%;
           margin-right: 12px;
           overflow: hidden;
-          border: 1px solid #f1f1f1;
+          border: 1px solid var(--color-border-1);
           img {
             width: 100%;
             height: 100%;
@@ -88,7 +93,7 @@ export default {
           justify-content: space-between;
           a {
             font-weight: 400;
-            color: #ef6d57;
+            color: var(--color-pink);
             font-size: 16px;
             height: 20px;
             -webkit-transition: all 0.3s;
@@ -96,7 +101,7 @@ export default {
             text-decoration: none;
             position: relative;
             &:hover {
-              color: #ef2f11;
+              color: var(--color-red);
               text-decoration: underline;
             }
             &.admin-mark {
@@ -113,7 +118,7 @@ export default {
             .reply {
               opacity: 0;
               font-size: 12px;
-              color: #ef6d57;
+              color: var(--color-pink);
               margin-right: 12px;
               cursor: pointer;
               transition: all 0.2s;
@@ -166,8 +171,8 @@ export default {
           flex-wrap: wrap;
           p {
               span {
-                color: var(--color-bg-primary);
-                background: #a9cff3;
+                color: var(--color-text-1);
+                background: var(--color-border-4);
                 display: inline-block;
                 height: 18px;
                 padding: 0 10px;
@@ -221,7 +226,7 @@ export default {
             .reply {
               opacity: 1;
               font-size: 12px;
-              color: #ef6d57;
+              color: var(--color-pink);
               position: absolute;
               right: 0;
               top: 13px;

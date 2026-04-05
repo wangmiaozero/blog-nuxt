@@ -31,7 +31,7 @@
             </dd>
             <dd class="footer__itemtext">
               <a
-                href="https://oss.wangmiaozero.cn/html/index.html"
+                href="https://example.com"
                 target="_blank"
                 class=""
                 >全栈修炼</a
@@ -68,7 +68,7 @@
           <div class="footer__col2">
             <dd class="footer__itemtext">
               <a
-                href="http://oss.wangmiaozero.cn/html/index.html"
+                href="https://example.com"
                 target="_blank"
                 class=""
                 >关于我</a
@@ -107,12 +107,12 @@
         </dl>
 
         <dl class="footer__item">
-          <a href="https://www.wangmiaozero.cn" target="_blank">
+          <a href="https://example.com" target="_blank">
             <div class="tzl-qrcode tzl-qrcode-vertical">
               <div class="tzl-qrcode__code">
                 <img
                   class="tzl-qrcode__img"
-                  src="https://oss.wangmiaozero.cn/blogs/wechat.jpg"
+                  src="https://picsum.photos/seed/footer-qrcode/240/240"
                 />
               </div>
               <div class="tzl-qrcode__text">
@@ -126,7 +126,7 @@
       <div class="footer__bottom">
         <div class="footer__copyright">
           <p v-if="userInfo && userInfo.icpTxt" >
-            ©2018-2029 汪苗个人博客 版权所有｜
+            ©2018-2029 王小明个人博客 版权所有｜
             <a :href="userInfo&&userInfo.icpLink" target="_blank"
               >{{ userInfo.icpTxt }}</a
             >
@@ -160,15 +160,13 @@
 </template>
 
 <script>
+import { mapState } from "pinia"
+import { useMainStore } from "@/stores/main"
+
 export default {
   mixins: [],
   computed: {
-    userInfo() {
-      return this.$store.getters.userInfo;
-    },
-    blogrollList(){
-      return this.$store.getters.blogrollList;
-    }
+    ...mapState(useMainStore, ["userInfo", "blogrollList"]),
   },
   created(){
 

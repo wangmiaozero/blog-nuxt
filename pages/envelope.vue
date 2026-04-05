@@ -7,11 +7,11 @@
             title="予给你一封信"
         />
         <section class="content">
-            <div v-if="!list.data || list.data.length == 0" class="data-null">
+            <div v-if="!list || list.length == 0" class="data-null">
                 空无一物，就像你我一样。
             </div>
             <template v-else>
-                <div v-for="(item, index) in list.data" :key="index" class="item">
+                <div v-for="(item, index) in list" :key="index" class="item">
                     <div class="text" v-html="item.contentHtml"></div>
                     <div class="time">{{ item.time }}</div>
                 </div>
@@ -22,51 +22,73 @@
 </template>
 
 <script>
-import scrollMixin from '~/mixin/scroll.js'
+import scrollMixin from '~/mixin/scroll'
+import { useLettersApi } from '@/composables/api'
+import { useMainStore } from '@/stores/main'
+
 export default {
     mixins: [scrollMixin],
+    setup() {
+        definePageMeta({ name: 'envelope' })
+        const main = useMainStore()
+        const api = useLettersApi()
+        const { data: pagePayload } = useAsyncData('envelope-page', async () => {
+            const res = await api.getLetters(1, 10)
+            return { list: res.data }
+        })
+        useHead(() => ({
+            title: main.siteInfo?.webName ? `Hello ${main.siteInfo.webName}` : 'Libai',
+        }))
+        return { pagePayload }
+    },
     data(){
         return{
             music: '',
-            refresh: true
+            refresh: true,
+            list: [],
+            pagination: { page: 1, size: 10, total: 0 },
         }
     },
-    head () {
-        return {
-            title: `Hello ${this.info.base.name}`
-        }
+    watch: {
+        pagePayload: {
+            immediate: true,
+            handler(v) {
+                if (v?.list) {
+                    this.list = v.list.list ?? []
+                    this.pagination = v.list.pagination ?? { page: 1, size: 10, total: 0 }
+                }
+            },
+        },
     },
     mounted(){
-        if (this.info.page_music.letter) {
-            this.music = this.info.page_music.letter
-            this.refresh = false
-            this.$nextTick(() => this.refresh = true)
-        }
+        this.music = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+        this.refresh = false
+        this.$nextTick(() => this.refresh = true)
         this.$loadStatus(this.list)
         this.$watch('scroll_isBottom', (val) => {
             val && this.load()
         }, { immediate: true })
     },
     methods: {
-        load() {
-            this.$loadMore('envelope', (res) => {
-                if (res.status === 1) {
-                    this.list.data = this.list.data.concat(res.body.data)
-                } else {
-                    alert(JSON.stringify(res))
+        async load() {
+            const nextPage = this.pagination.page + 1
+            const api = useLettersApi()
+            const res = await api.getLetters(nextPage, this.pagination.size)
+            if (res.code === 200 && res.data) {
+                this.list = this.list.concat(res.data.list)
+                this.pagination = res.data.pagination
+                if (res.data.list.length === 0 || this.list.length >= res.data.pagination.total) {
+                    useMainStore().setStatus('nomore')
                 }
-            })
+            }
         }
     },
     computed: {
-		info(){
-			return this.$store.state.data
-		}
+        info(){
+            const main = useMainStore()
+            return main.siteInfo || {}
+        }
     },
-    async asyncData(context){
-        let { data } = await context.$axios.get('envelope')
-        return { list: data.status === 1 ? data.body : {} }
-    }
 }
 </script>
 <style lang="scss" scoped>
@@ -74,11 +96,11 @@ export default {
     text-align: center;
     font-size: 16px;
     letter-spacing: 4px;
-    color: #313131;
+    color: var(--color-text-1);
 }
 .container{
     min-height: 100vh;
-    background: #eef5ff;
+    background: var(--color-bg-primary2);
 }
 .content{
     width: 700px;
@@ -94,8 +116,8 @@ export default {
             box-shadow: 0 1px 8px rgba(0, 132, 255, 0.3);
         }
         .text{
-            color: #333;
-            ::v-deep .hljs-right{
+            color: var(--color-text-1);
+            :deep(.hljs-right){
                 text-align: right;
             }
         }

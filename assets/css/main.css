@@ -67,7 +67,7 @@ body::-webkit-scrollbar-track {
 :root {
     --color-bg-primary: #ffffff;
     --color-bg-primary1:#F6F8FA;
-    --color-bg-primary2:#fbe5e5;
+    --color-bg-primary2:#e8eef5;
     --color-bg-opacity: rgba(255, 255, 255, 0.9);
 
     --color-border-1: #eeeeee;
@@ -92,8 +92,15 @@ body::-webkit-scrollbar-track {
     --color-pink: #EF6D57;
     --color-dark: #080808;
     --color-active: #0084ff;
+
+    --article-shell-top: #fbfdff;
+    --article-shell-mid: #f4f8fb;
+    --article-panel-bg: #ffffff;
+    --article-stat-bg: #f6f8fa;
+    --article-float-bg: rgba(255, 255, 255, 0.9);
 }
 /* 晚上 */
+:root.dark,
 .dark-mode {
     --color-bg-primary: #0d1117;
     --color-bg-primary1:#080605;
@@ -122,4 +129,67 @@ body::-webkit-scrollbar-track {
     --color-pink: #EF6D57;
     --color-dark: #080808;
     --color-active: #0084ff;
+
+    --article-shell-top: #030712;
+    --article-shell-mid: #07111c;
+    --article-panel-bg: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(13, 17, 23, 0.98));
+    --article-stat-bg: linear-gradient(180deg, rgba(17, 24, 39, 0.84), rgba(10, 14, 24, 0.96));
+    --article-float-bg: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(13, 17, 23, 0.98));
+}
+
+/* ── Dark mode: Menu overlay ─────────────────────────────────────────────── */
+:root.dark .nav,
+.dark-mode .nav {
+    background: rgba(13, 17, 23, 0.96);
+}
+:root.dark .nav .nav-list li a,
+.dark-mode .nav .nav-list li a {
+    color: #ccc;
+}
+:root.dark .nav .nav-list li a:hover,
+.dark-mode .nav .nav-list li a:hover {
+    color: #fff;
+}
+:root.dark .nav .world,
+.dark-mode .nav .world {
+    color: #666;
+}
+:root.dark .menu,
+.dark-mode .menu {
+    background: rgba(13, 17, 23, 0.9);
+}
+
+/* ── Dark mode: Comment & CommentTree ────────────────────────────────────── */
+:root.dark .comment-child-list,
+.dark-mode .comment-child-list {
+    border-color: var(--color-border-2);
+    background: var(--color-bg-primary1);
+}
+:root.dark .comment-child-content p span,
+.dark-mode .comment-child-content p span {
+    background: #1e3a5f;
+    color: #a9cff3;
+}
+:root.dark .comment-form input,
+:root.dark .comment-form textarea,
+.dark-mode .comment-form input,
+.dark-mode .comment-form textarea {
+    background: var(--color-bg-primary1);
+    color: var(--color-text-1);
+    border-color: var(--color-border-1);
+}
+:root.dark .comment-form .bottom button,
+.dark-mode .comment-form .bottom button {
+    background: var(--color-active);
+    color: #fff;
+}
+
+/* ── Dark mode: scrollbar ────────────────────────────────────────────────── */
+:root.dark body::-webkit-scrollbar-thumb,
+.dark-mode body::-webkit-scrollbar-thumb {
+    background: #30363d;
+}
+:root.dark body::-webkit-scrollbar-track,
+.dark-mode body::-webkit-scrollbar-track {
+    background: #0d1117;
 }

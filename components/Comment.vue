@@ -138,7 +138,7 @@
               <div class="comment-item-box">
                 <div class="head">
                   <div class="img">
-                    <img :src="'/image/comment/' + item.avatarUrl" />
+                    <img :src="getCommentAvatarSrc(item.avatarUrl)" />
                   </div>
                   <div class="name">
                     <a class="admin-mark">{{ item.name }}</a>
@@ -203,7 +203,10 @@ import Captcha from "@/components/common/captcha";
 import Tips from "@/components/Tips";
 import tool from "../utils/tool";
 import { alert } from "../utils/tips";
-import { Mock } from "@/utils/mock"
+import { useCommentsApi } from '@/composables/api'
+import { mapState } from "pinia"
+import { useMainStore } from "@/stores/main"
+
 export default {
   props: ["id", "title"],
   components: {
@@ -214,7 +217,7 @@ export default {
   },
   data() {
     return {
-      imgRandom: tool.randomImg(),
+      puzzleNonce: 0,
       form: {
         name: "",
         email: "",
@@ -224,7 +227,7 @@ export default {
         qq: "",
         content: "",
         userId: tool.newGuid(),
-        avatarUrl: tool.randomNun(1, 10) + ".jpg",
+        avatarUrl: tool.DEFAULT_COMMENT_AVATAR,
       },
       code: {
         captchaId: "",
@@ -257,25 +260,22 @@ export default {
     this.gettersComment();
   },
   computed: {
-    userInfo() {
-      return this.$store.getters.userInfo;
+    ...mapState(useMainStore, ["userInfo"]),
+    imgRandom() {
+      return tool.randomImgFromSeed(`comment-${this.id}-${this.puzzleNonce}`)
     },
   },
   methods: {
     // get comment data
-    gettersComment() {
-      const res = Mock().get("/web/comment/page")
-      // this.$axios
-      //   .post(`/web/comment/page`, {
-      //     targetId: this.id,
-      //     platformType: "pc",
-      //   })
-      //   .then((res) => {
-          let { list, pagination } = res.data;
-          let result = tool.deepTree(list);
-          this.commentList = result;
-          this.pagination = pagination;
-        // });
+    async gettersComment() {
+      const api = useCommentsApi()
+      const res = await api.getComments(String(this.id), this.pagination.page, this.pagination.size)
+      if (res.code === 200 && res.data) {
+        let { list, pagination } = res.data;
+        let result = tool.deepTree(list);
+        this.commentList = result;
+        this.pagination = pagination;
+      }
     },
     gettersUserInfo() {
       let _userInfo = localStorage.getItem("_userInfo");
@@ -284,12 +284,12 @@ export default {
         this.form = {
           name: _userInfo.name,
           email: _userInfo.email,
-          phone: _userInfo.phone,
+          phone: "",
           address: _userInfo.address,
           wechat: _userInfo.wechat,
           qq: _userInfo.qq,
           content: "",
-          avatarUrl: _userInfo.avatarUrl,
+          avatarUrl: tool.normalizeCommentAvatarName(_userInfo.avatarUrl),
           userId: _userInfo.userId,
         };
       }
@@ -298,24 +298,35 @@ export default {
       let _userInfo = {
         name: "",
         email: "",
-        phone: "",
         address: "",
         wechat: "",
         qq: "",
         content: "",
         userId: tool.newGuid(),
-        avatarUrl: tool.randomNun(1, 10) + ".jpg",
+        avatarUrl: tool.DEFAULT_COMMENT_AVATAR,
       };
       try {
         if (userInfo) {
-          userInfo.content = "";
-          localStorage.setItem("_userInfo", JSON.stringify(userInfo));
+          const cacheUserInfo = {
+            name: userInfo.name,
+            email: userInfo.email,
+            address: userInfo.address,
+            wechat: userInfo.wechat,
+            qq: userInfo.qq,
+            content: "",
+            userId: userInfo.userId,
+            avatarUrl: tool.normalizeCommentAvatarName(userInfo.avatarUrl),
+          };
+          localStorage.setItem("_userInfo", JSON.stringify(cacheUserInfo));
         } else {
           localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
         }
       } catch (error) {
         localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
       }
+    },
+    getCommentAvatarSrc(avatarUrl) {
+      return tool.getCommentAvatarSrc(avatarUrl);
     },
     captchaChange() {
       this.code.verifyCode = "";
@@ -326,7 +337,6 @@ export default {
         tool.stringVerification(this.form.name),
         tool.emailVerification(this.form.email),
         this.form.content ? true : false,
-        // tool.phoneCodeVerification(this.form.phone),
         // tool.checkURL(this.form.address)
       ];
       this.form.content = this.form.content
@@ -353,8 +363,8 @@ export default {
         this.status = 5;
       }
     },
-    verifyResult(row) {
-      this.imgRandom = tool.randomImg();
+    async verifyResult(row) {
+      this.puzzleNonce += 1
       if (row.status) {
         this.status = 6;
         this.isVerification = 2;
@@ -363,43 +373,40 @@ export default {
         if (this.replyObj) {
           parentId = this.replyObj.parentId;
         }
-        this.$axios
-          .post("/web/comment/add", {
-            ...params,
+        const api = useCommentsApi()
+        const res = await api.addComment(String(this.id), {            ...params,
             ...this.code,
             commentName: this.title,
-            targetId: this.id,
+            targetId: String(this.id),
             parentId,
             platformType: "pc",
-          })
-          .then((res) => {
-            if (res.data.code == 1000) {
-              this.initUserInfo(params);
-              this.isVerification = 0;
-              this.status = 7;
-              alert({
-                content: "评论成功，等待管理员审核~",
-                duration: 3000,
-                type: "zero",
-              });
-              this.$refs.captcha.refresh();
-              setTimeout(() => {
-                this.status = -1;
-                this.gettersComment();
-              }, 1000);
-            } else {
-              this.isVerification = 0;
-              setTimeout(() => {
-                this.status = -1;
-              }, 1000);
-              alert({
-                content: res.data.message,
-                duration: 2500,
-                type: "zero",
-              });
-              this.$refs.captcha.refresh();
-            }
+        })
+        if (res.code == 200) {
+          this.initUserInfo(params);
+          this.isVerification = 0;
+          this.status = 7;
+          alert({
+            content: "评论成功，等待管理员审核~",
+            duration: 3000,
+            type: "zero",
           });
+          this.$refs.captcha.refresh();
+          setTimeout(() => {
+            this.status = -1;
+            this.gettersComment();
+          }, 1000);
+        } else {
+          this.isVerification = 0;
+          setTimeout(() => {
+            this.status = -1;
+          }, 1000);
+          alert({
+            content: res.message,
+            duration: 2500,
+            type: "zero",
+          });
+          this.$refs.captcha.refresh();
+        }
       } else {
         this.isVerification = 0;
         this.status = -1;
@@ -477,10 +484,10 @@ export default {
     left: 50%;
     width: 310px;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px #dbdbdb;
+    box-shadow: 0 0 10px var(--color-border-1);
     padding: 40px 30px 30px;
     border-radius: 6px;
-    background: rgb(255, 255, 255);
+    background: var(--color-bg-primary);
     z-index: 999999;
     text-align: center;
     opacity: 0;
@@ -529,7 +536,7 @@ export default {
         color: var(--color-text-4);
       }
       &:hover {
-        border-color: rgb(210, 210, 210);
+        border-color: var(--color-border-1);
       }
     }
     button {
@@ -655,7 +662,7 @@ export default {
       padding: 15px;
       outline: none;
       resize: none;
-      background: url("~static/image/comment/plbj.png") no-repeat bottom right;
+      background: url("/image/comment/plbj.png") no-repeat bottom right;
       &:focus {
         border-color: var(--color-border-3);
       }
@@ -683,7 +690,7 @@ export default {
           border-radius: 50%;
           margin-right: 12px;
           overflow: hidden;
-          border: 1px solid #f1f1f1;
+          border: 1px solid var(--color-border-1);
           img {
             width: 100%;
             height: 100%;
@@ -696,7 +703,7 @@ export default {
           justify-content: space-between;
           a {
             font-weight: 400;
-            color: #ef6d57;
+            color: var(--color-pink);
             font-size: 16px;
             height: 20px;
             -webkit-transition: all 0.3s;
@@ -704,7 +711,7 @@ export default {
             text-decoration: none;
             position: relative;
             &:hover {
-              color: #ef2f11;
+              color: var(--color-red);
               text-decoration: underline;
             }
             &.admin-mark {
@@ -720,7 +727,7 @@ export default {
             .reply {
               opacity: 0;
               font-size: 12px;
-              color: #ef6d57;
+              color: var(--color-pink);
               margin-right: 12px;
               cursor: pointer;
               transition: all 0.2s;
@@ -803,7 +810,7 @@ export default {
       }
     }
     &.success span {
-      color: #2fc700;
+      color: var(--color-bar);
       font-size: 13px;
       margin-right: 2px;
     }
@@ -1016,7 +1023,7 @@ export default {
               .reply {
                 opacity: 1;
                 font-size: 12px;
-                color: #ef6d57;
+                color: var(--color-pink);
                 position: absolute;
                 right: 0;
                 top: 13px;

@@ -66,8 +66,36 @@ typings/
 
 .nuxt/
 
-# Nuxt generate
+# Nitro / nuxt build output (node-server, etc.)
+.output
+.output/
+
+# Nuxt generate / static output
 /dist
+dist
+
+# Vite dependency pre-bundle cache (under node_modules)
+node_modules/.vite
+
+# TypeScript incremental
+*.tsbuildinfo
+
+# Monorepo / tooling
+.turbo
+
+# Playwright CLI (local cache / state)
+.playwright-cli
+
+# Package manager logs
+pnpm-debug.log*
+
+# Deploy platform metadata
+.vercel
+.netlify
+
+# Local env overrides (keep `.env.example` committed)
+.env.local
+.env.*.local
 
 # vuepress build output
 .vuepress/dist

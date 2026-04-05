@@ -8,7 +8,7 @@
             title="嘿，你今天笑了么(≖ᴗ≖)✧"
         ></Header>
         <!-- <div class="content" v-html="infoData.content"></div> -->
-         <ArticleContent class="content" :html="infoData.mdcontent" />
+         <ArticleContent class="content" :html="infoData.mdcontent ?? ''" />
         <Menu />
         <Footer/>
     </div>
@@ -17,9 +17,11 @@
 <script>
 import Menu from '@/components/Menu'
 import Footer from '@/components/Footer'
-import config from "../config/index"
-import ArticleContent from '@/components/ArticleContent.vue';
-import { Mock } from "@/utils/mock"
+import ArticleContent from '@/components/ArticleContent.vue'
+import { computed } from 'vue'
+import { useArticlesApi } from '@/composables/api'
+import { useMainStore } from '@/stores/main'
+
 export default {
     name: 'about',
      components: {
@@ -27,37 +29,30 @@ export default {
         ArticleContent,
         Footer
 	},
+    setup() {
+        definePageMeta({ name: 'about' })
+        const api = useArticlesApi()
+        const { data: pagePayload } = useAsyncData('about-page', async () => {
+            const res = await api.getArticleAbout()
+            return { infoData: res.data }
+        })
+        const infoData = computed(() => pagePayload.value?.infoData ?? {})
+        const main = useMainStore()
+        useHead(() => ({
+            title: main.siteInfo?.webName ? `Hello ${main.siteInfo.webName}` : 'Libai',
+        }))
+        return { infoData }
+    },
     data(){
         return{
             title: false,
             refresh: true
         }
     },
-    head () {
-        return {
-            title: `Hello ${this.userInfo.webName}`
-        }
-    },
     mounted(){
             this.refresh = false
             this.$nextTick(() => this.refresh = true )
     },
-    computed: {
-        userInfo() {
-			return this.$store.getters.userInfo
-		}
-    },
-    async asyncData(context){
-         const { data } =  Mock().get("/web/article/info17");
-         console.log(data,'data')
-        // const { data } = await context.$axios.get(`/web/article/info`,{
-        //     params:{
-        //         id:17,
-        //         p:config.phone
-        //     }
-        // })
-        return {infoData:data}
-    }
 }
 </script>
 
@@ -71,7 +66,7 @@ export default {
         box-shadow: none !important;
         min-height: auto;
         transition: none;
-        ::v-deep {
+        :deep() {
             h1, h2, h3, h4, h5{
                 border: 0;
                 padding: 0;
@@ -100,7 +95,7 @@ export default {
                 }
             }
             blockquote{
-                background: white;
+                background: var(--color-bg-primary1);
                 border-radius: 10px;
                 padding-left: 22px;
                 margin-bottom: 20px;
@@ -133,7 +128,7 @@ export default {
                     li{
                         margin: 0;
                         font-size: 14px;
-                        color: #606060;
+                        color: var(--color-text-2);
                     }
                 }
             }
@@ -141,7 +136,7 @@ export default {
                 border-radius: 8px;
                 transition: all .3s;
                 &:hover{
-                    box-shadow: 0 2px 10px #a5a5a5;
+                    box-shadow: 0 2px 10px var(--color-border-1);
                 }
             }
             iframe{
@@ -160,7 +155,7 @@ export default {
     }
     @media screen and (max-width: 600px) {
         .content{
-            ::v-deep {
+            :deep() {
                 iframe{
                     height: 310px;
                 }

@@ -9,11 +9,12 @@
 </template>
 
 <script>
+import { mapState } from "pinia"
+import { useMainStore } from "@/stores/main"
+
 export default {
 	computed: {
-		status() {
-			return this.$store.getters.status
-		}
+		...mapState(useMainStore, ["status"]),
 	},
 	methods: {
 		hanledMore(){
@@ -30,7 +31,7 @@ export default {
         height: 34px;
         line-height: 36px;
         padding: 0 36px;
-        color: #909090;
+        color: var(--color-text-3);
         background: var(--color-bg-primary);
         z-index: 9;
         letter-spacing: 2px;
@@ -57,30 +58,30 @@ export default {
 .dot {
 	width: 15px;
 	height: 15px;
-	background: #3ac;
+	background: var(--color-bar);
 	border-radius: 100%;
 	display: inline-block;
 	animation: slide 1s infinite;
 }
 .dot:nth-child(1) {
 	animation-delay: 0.1s;
-	background: #32aacc;
+	background: var(--color-bar);
 }
 .dot:nth-child(2) {
 	animation-delay: 0.2s;
-	background: #64aacc;
+	background: var(--color-active);
 }
 .dot:nth-child(3) {
 	animation-delay: 0.3s;
-	background: #96aacc;
+	background: var(--color-bar);
 }
 .dot:nth-child(4) {
 	animation-delay: 0.4s;
-	background: #c8aacc;
+	background: var(--color-active);
 }
 .dot:nth-child(5) {
 	animation-delay: 0.5s;
-	background: #faaacc;
+	background: var(--color-bar);
 }
 @-moz-keyframes slide {
 	0% {

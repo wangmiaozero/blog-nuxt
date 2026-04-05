@@ -14,7 +14,7 @@
             <span class="iconfont" :class="'icon-' + resultInfo.icon"></span>
             <p class="email" v-if="resultInfo.email">{{ result.email }}</p>
             <p>{{ result.message }}</p>
-            <nuxt-link to="/" v-if="resultInfo.home">去到首页</nuxt-link>
+            <NuxtLink to="/" v-if="resultInfo.home">去到首页</NuxtLink>
             <a href="/subscribe" v-if="resultInfo.reSubmit">重新提交</a>
           </div>
         </template>
@@ -103,7 +103,10 @@ import Menu from "@/components/Menu";
 import Captcha from "@/components/common/captcha";
 import PuzzleVerification from "@/components/PuzzleVerification";
 import tool from "../utils/tool";
-import config from "../config/index"
+import { useSubscriptionsApi } from '@/composables/api'
+import { mapState } from "pinia"
+import { useMainStore } from "@/stores/main"
+
 export default {
   name: "subscribe",
   components: {
@@ -113,7 +116,7 @@ export default {
   },
   data() {
     return {
-      imgRandom: tool.randomImg(),
+      puzzleNonce: 0,
       isVerification: 0,
       resultList: [
         {
@@ -155,8 +158,9 @@ export default {
     };
   },
   computed: {
-    userInfo() {
-      return this.$store.getters.userInfo;
+    ...mapState(useMainStore, { userInfo: "siteInfo" }),
+    imgRandom() {
+      return tool.randomImgFromSeed(`subscribe-${this.puzzleNonce}`)
     },
     resultInfo() {
       try {
@@ -170,18 +174,17 @@ export default {
   },
   head() {
     return {
-      title: `Subscribe | ${this.userInfo.webName}`,
+      title: `Subscribe | ${this.userInfo?.webName ?? "Libai"}`,
     };
   },
   mounted() {
     this.gettersUserInfo();
-    this.music = "https://oss.wangmiaozero.cn/blogs/qianbaidu.mp3";
+    this.music = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
     this.refresh = false;
     this.$nextTick(() => (this.refresh = true));
   },
-  beforeRouteUpdate(to, from, next) {
+  beforeRouteUpdate() {
     this.result = {};
-    next();
   },
   methods: {
     gettersUserInfo() {
@@ -209,22 +212,22 @@ export default {
     async verifyResult(row) {
       if (row.status) {
         this.isVerification = 2;
-        let result = await this.$axios.post("/web/subscribe/add", {
+        const api = useSubscriptionsApi()
+        const result = await api.subscribe({
           platformType: "pc",
           ...this.form,
           ...this.code,
-          p:config.phone
         });
-        if (result.data.code === 1000) {
+        if (result.code === 200) {
           this.hintResult = "success";
           this.text = "订阅成功！";
           this.$refs.captcha.refresh();
-          this.imgRandom = tool.randomImg();
+          this.puzzleNonce += 1
         } else {
           this.hintError();
-          this.text = result.data.message;
+          this.text = result.message;
           this.$refs.captcha.refresh();
-          this.imgRandom = tool.randomImg();
+          this.puzzleNonce += 1
         }
       } else {
         this.isVerification = 0;
@@ -269,7 +272,7 @@ export default {
     transform: translate3d(-4px, 0, 0);
   }
 }
-.container ::v-deep .header-content {
+.container :deep(.header-content) {
   background: rgb(255 255 255 / 13%);
   border-bottom: 1px solid rgba(246, 247, 248, 0.07);
   .icon {
@@ -296,7 +299,7 @@ export default {
 .content {
   width: 100vw;
   height: 100vh;
-  background: url("~static/image/other/subscribe.png") no-repeat bottom right;
+  background: url("/image/other/subscribe.png") no-repeat bottom right;
   background-size: cover;
   overflow: hidden;
   position: relative;

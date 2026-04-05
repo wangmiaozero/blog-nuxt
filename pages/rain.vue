@@ -1,7 +1,7 @@
 <template>
     <div class="rain">
         <div class="logo-img" @click="toIndex">
-            <img src="/image/logo/logo1.png">
+            <img :src="currentLogo">
         </div>
         <img class="rain-bg" :src="img" draggable="false">
         <img class="words" src="/image/rain/words.png" draggable="false">
@@ -35,12 +35,15 @@
 
 <script>
 import Menu from '@/components/Menu'
+import { LOCAL_LOGO_URLS, pickRandomLogo } from '@/utils/assets'
 export default {
     components: {
 		Menu
 	},
     data(){
         return{
+            currentLogo: LOCAL_LOGO_URLS[0],
+            logoTimer: null,
             rainIcon: [
                 {
                     on: '/image/rain/rain_on.png',
@@ -75,6 +78,10 @@ export default {
         }
     },
     mounted(){
+        this.currentLogo = pickRandomLogo(this.currentLogo)
+        this.logoTimer = setInterval(() => {
+            this.currentLogo = pickRandomLogo(this.currentLogo)
+        }, 15000)
         const xhr = new XMLHttpRequest()
         xhr.open('GET', '/image/rain/rain-bg.gif')
         xhr.send()
@@ -92,17 +99,22 @@ export default {
                 setTimeout(() => {
                     this.loadingClass = 'hide'
                     this.img = '/image/rain/rain-bg.gif'
-                    this.$nextTick(() => this.music(0, false))
+                    // 不在此处调用 play()：无用户手势会触发 NotAllowedError（自动播放策略）
                 }, 100)
             }
         }
     },
+    beforeUnmount() {
+        if (this.logoTimer) clearInterval(this.logoTimer)
+    },
     methods: {
         music(type, active){
-            this.$set(this.rainIcon[type], 'active', !active)
+            this.rainIcon[type].active = !active
             let music = document.getElementsByClassName("music");
-            if (!active) {                    
-                music[type].play()
+            if (!active) {
+                const el = music[type]
+                const p = el?.play?.()
+                if (p !== undefined) p.catch(() => {})
             } else {
                 music[type].pause()
             }

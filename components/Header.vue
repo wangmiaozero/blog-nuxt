@@ -5,7 +5,7 @@
             <canvas v-if="like" id="qrccode"></canvas>
             <div class="header-content-left icon">
                 <div class="logo-img" @click="toPage('/')">
-                    <img :src="dark?'/image/logo/logo3.png':'/image/logo/logo4.png'">
+                    <img :src="currentLogo">
                 </div>
                 <span 
                     class="iconfont" 
@@ -27,7 +27,7 @@
                     ></span>
                 </template>
                 <span class="myself" @click="toPage('/about')">
-                    <img :src="userInfo.headImg">
+                    <img :src="currentLogo">
                 </span>
             </div>
 
@@ -67,8 +67,12 @@
 
 <script>
 import QRCode from "qrcode"
-import scrollMixin from '~/mixin/scroll.js'
+import scrollMixin from '~/mixin/scroll'
 import { alert } from "../utils/tips";
+import { LOCAL_LOGO_URLS, pickRandomLogo } from '@/utils/assets'
+import { mapState } from "pinia"
+import { useMainStore } from "@/stores/main"
+
 export default {
     mixins: [scrollMixin],
     props: {
@@ -123,24 +127,27 @@ export default {
             likeHint: false,
 
             played: false,
-            ss: ''
+            ss: '',
+
+            logoUrl: LOCAL_LOGO_URLS[0],
+            logoTimer: null,
         }
     },
     computed: {
-        // mobile music progress
+        ...mapState(useMainStore, ["userInfo", "dark"]),
         dashOffset() {
             return (1 - this.percent) * this.dashArray
         },
-        userInfo() {
-			return this.$store.getters.userInfo
-		},
-        dark(){
-            return this.$store.getters.dark
-        }
-
+        currentLogo() {
+            return this.logoUrl
+        },
     },
     mounted(){
         this.gettersUserInfo()
+        this.logoUrl = pickRandomLogo(this.logoUrl)
+        this.logoTimer = setInterval(() => {
+            this.logoUrl = pickRandomLogo(this.logoUrl)
+        }, 15000)
         const o = {
             articlePage: () => {
                 this.$nextTick(() => {
@@ -160,15 +167,19 @@ export default {
                 } catch(e) {
                     this.platform = 'click'
                 }
-                document.addEventListener(this.platform, this.touch)
+                const touchOpts = { passive: true }
+                document.addEventListener(this.platform, this.touch, touchOpts)
             }
         }
         for (let key in o) {
             this[key] && o[key]()
         }
     },
-    beforeDestroy() {
-        this.playMusic && window.removeEventListener(this.platform, this.touch)
+    beforeUnmount() {
+        if (this.playMusic) {
+            document.removeEventListener(this.platform, this.touch, { passive: true })
+        }
+        if (this.logoTimer) clearInterval(this.logoTimer)
     },
     
     methods: {
@@ -256,17 +267,17 @@ export default {
             }
         },
         // like +1
-        onLike(){
+        async onLike(){
             if (this.isLike) {
                 clearTimeout(this.likeTime)
                 this.likeHint = true
                 this.likeTime = setTimeout(() => this.likeHint = false, 2000)
             } else {
-                this.$axios.post(`/web/article/like`,{id:this.id,platformType:"pc",userId:this.user_info.userId}).then(res => {
-                    this.isLike = true
-                    this.$emit('liked', true)
-                    localStorage.setItem(`like-${this.id}`, true)
-                })
+                const api = useArticlesApi()
+                await api.likeArticle(String(this.id), { userId: this.user_info.userId, platformType: 'pc' })
+                this.isLike = true
+                this.$emit('liked', true)
+                localStorage.setItem(`like-${this.id}`, 'true')
             }
         },
         toPage(type){

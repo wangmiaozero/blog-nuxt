@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import scrollMixin from '~/mixin/scroll.js'
+import scrollMixin from '~/mixin/scroll'
 export default {
     mixins: [scrollMixin],
     methods: {
@@ -30,7 +30,7 @@ export default {
         }
         span{
             font-size: 40px;
-            color: #73aada;
+            color: var(--color-bar);
             &:hover{
                 color: var(--color-active)
             }

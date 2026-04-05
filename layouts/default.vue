@@ -1,33 +1,53 @@
 <template>
-	<div>
-		<!-- <div class="btn" @click="btn">换肤</div> -->
-		<nuxt class="page" keep-alive :keep-alive-props="{include: includeArr}"/>
+	<div class="page">
+		<slot />
 	</div>
 </template>
 
 <script>
+import { watch } from 'vue'
+import { mapState, mapActions } from 'pinia'
+import { useMainStore } from '@/stores/main'
+
 export default {
-	data() {
-		return {
-			includeArr: ['index', 'about'] // 缓存页面
+	setup() {
+		const mainStore = useMainStore()
+		const colorMode = useColorMode()
+		mainStore.setDark(colorMode.value === 'dark')
+		if (import.meta.client) {
+			watch(
+				() => colorMode.value,
+				(value) => {
+					mainStore.setDark(value === 'dark')
+				},
+				{ immediate: true },
+			)
 		}
 	},
-	   computed: {
-        dark(){
-            return this.$store.getters.dark
-        }
-
-    },
-	methods: {
-		btn(){
-			this.$colorMode.preference = this.dark == 'dark' ? '' : 'dark'
+	data() {
+		return {
+			includeArr: ['index', 'about']
 		}
-	}
+	},
+	computed: {
+		...mapState(useMainStore, ['dark']),
+	},
+	methods: {
+		...mapActions(useMainStore, ['toggleDark']),
+		btn() {
+			this.toggleDark()
+		},
+	},
 }
 </script>
 
 <style scoped>
-.btn{
+.page {
+	min-height: 100vh;
+	background: var(--color-bg-primary);
+}
+
+.btn {
 	position: fixed;
 	top: 50%;
 	left: 50%;
